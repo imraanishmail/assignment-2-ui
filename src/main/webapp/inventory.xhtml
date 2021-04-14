@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <div class="p-d-flex">
+        <div class="p-mr-2" style="margin-top: 2em">
+            <div class="p-mr-2">
+                <h:form>
+                    <p:dataTable id="table" var="inventory" value="#{storeAppBean.inventoryList}">
+
+                        <p:column headerText="ID" field="id" filterable="false">
+                            <h:outputText value="#{inventory.id}"/>
+                        </p:column>
+
+                        <p:column headerText="Name" field="name" filterable="false">
+                            <h:outputText value="#{inventory.name}"/>
+                        </p:column>
+
+                        <p:column headerText="Sport" field="sport" filterable="false">
+                            <h:outputText value="#{inventory.sport}"/>
+                        </p:column>
+
+                        <p:column headerText="Quantity" field="quantity" filterable="false">
+                            <h:outputText value="#{inventory.quantity}"/>
+                        </p:column>
+
+                        <p:column headerText="Unit Price" field="unitPrice" filterable="false">
+                            <h:outputText value="#{inventory.unitPrice}"/>
+                        </p:column>
+
+                        <p:column headerText="Date Updated" field="dateUpdated" filterable="false">
+                            <h:outputText value="#{inventory.dateUpdated}"/>
+                        </p:column>
+
+                        <p:column headerText="Remove Item">
+                            <p:commandButton type="submit" value="Remove Item" icon="pi pi-refresh"
+                                             actionListener="#{storeAppBean.removeItem(inventory)}"
+                                             style="margin-right: 2em" iconPos="right"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </div>
+        </div>
+
+        <h:form>
+            <div class="p-field" style="margin: 2em">
+                <p:outputLabel for="name" style="margin-right: 1.90em">Name: </p:outputLabel>
+                <p:inputText id="name" type="text" value="#{storeAppBean.name}"/>
+            </div>
+
+            <div class="p-field" style="margin: 2.95em">
+                <p:outputLabel for="sport" style="margin-right: 1.25em">Sport: </p:outputLabel>
+                <p:inputText id="sport" type="text" value="#{storeAppBean.sport}"/>
+            </div>
+
+            <div class="p-field" style="margin: 2.40em">
+                <p:outputLabel for="quantity" style="margin-right: 1.20em">Quantity: </p:outputLabel>
+                <p:inputText id="quantity" type="text" value="#{storeAppBean.quantity}"/>
+            </div>
+
+            <div class="p-field" style="margin: 2em">
+                <p:outputLabel for="unitPrice" style="margin-right: 1.20em">Unit Price: </p:outputLabel>
+                <p:inputText id="unitPrice" type="text" value="#{storeAppBean.unitPrice}"/>
+            </div>
+
+            <p:commandButton style="margin: 2em" type="submit" actionListener="#{storeAppBean.addItem}"
+                             validateClient="true"
+                             value="Add Item" icon="pi pi-check" iconPos="right"/>
+        </h:form>
+    </div>
+</h:body>
+</html>
